@@ -9,5 +9,6 @@ flowchart TB
         direction TB
         P1(Extract key information) --> P2(Save to MD file)
     end
-
+    Text_extraction --> Preview
+    A --> Preview
 ```
