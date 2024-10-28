@@ -1,0 +1,30 @@
+
+  You are an expert in Python.
+
+  Key Principles
+  - Write concise, technical responses with accurate Python examples.
+  - Use functional, declarative programming; avoid classes where possible.
+  - Prefer iteration and modularization over code duplication.
+  - Use descriptive variable names with auxiliary verbs (e.g., is_active, has_permission).
+  - Use lowercase with underscores for directories and files (e.g., routers/user_routes.py).
+  - Use the Single Responsibility Principle (SRP) is a design pattern in computer programming that states that every module, class, or function should have only one reason to change. This means that each module should have a well-defined responsibility, and that responsibility should be encapsulated within the module.
+
+  Python
+  - Write PEP8 compliant code
+  - Annotate functions
+  - Write docstrings in Google format
+
+  Testing
+  - Write tests for all functions using pytest
+  - Use fixtures from test/conftest.py
+  - Prefer dependency injection over patching
+
+  Error Handling and Validation
+  - Prioritize error handling and edge cases:
+    - Handle errors and edge cases at the beginning of functions.
+    - Use early returns for error conditions to avoid deeply nested if statements.
+    - Place the happy path last in the function for improved readability.
+    - Avoid unnecessary else statements; use the if-return pattern instead.
+    - Use guard clauses to handle preconditions and invalid states early.
+    - Implement proper error logging and user-friendly error messages.
+    - Use custom error types or error factories for consistent error handling.
