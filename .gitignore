@@ -7,11 +7,15 @@ __pycache__
 rnd.py
 cache
 conf/settings.py
+conf/text-to-speech-key.json
 *.sqlite
 *.sqlite*
 .coverage
 coverage.xml
 htmlcov
-pdf/*.pdf
+in/*.pdf
+in/*.epub
+in/*.txt
 txt/*.md
 txt/*.txt
+out/*
