@@ -6,6 +6,9 @@ from google.cloud import texttospeech
 from pydub import AudioSegment
 
 
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "conf/text-to-speech-key.json"
+
+
 # Convert Markdown to plain text
 def md_to_text(md_content):
     html = markdown.markdown(md_content)
@@ -72,7 +75,7 @@ def synthesize_speech(
 
 
 # Full pipeline
-def md_to_speech_pipeline(md_path, output_dir="out"):
+def md_to_speech_pipeline(md_path, output_dir="out", start=0, stop=1):
     os.makedirs(output_dir, exist_ok=True)
 
     with open(md_path, "r", encoding="utf-8") as f:
@@ -83,14 +86,16 @@ def md_to_speech_pipeline(md_path, output_dir="out"):
 
     temp_files = []
     for idx, chunk in enumerate(chunks):
+        if idx < start:
+            continue
         out_path = os.path.join(output_dir, f"google_tts_{idx}.mp3")
-        print(f"🔊 Generating chunk {idx + 1}/{len(chunks)}...")
-        # synthesize_speech(chunk, out_path)
+        print(f"🔊 Generating chunk {idx}/{len(chunks)}...")
+        synthesize_speech(chunk, out_path)
         temp_files.append(out_path)
-        if idx > 2:
+        if idx == stop:
             break
 
-    merge_mp3s(temp_files, output_path="out/final_output.mp3")
+    merge_mp3s(temp_files, output_path=f"out/final_output_{stop}.mp3")
 
     # Optional cleanup
     for f in temp_files:
